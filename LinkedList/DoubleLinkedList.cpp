@@ -4,7 +4,7 @@ using namespace std;
 struct DoubleLL
 {
     DoubleLL *Head, *Tail;
-};
+}*DLL;
 
 
 class DoubleLinkedList
@@ -110,10 +110,20 @@ void insertAtGivenPosition(int x, int pos) // assume node index starts from 1.
     else 
     {
         for (int i = 1; i < pos -1; i++) iNode = iNode -> next;
+        if (iNode->next) // if the node is not the last element do....
+        {
         Node->prev = iNode;
         Node->next = iNode->next;
         iNode->next->prev = Node;
-        iNode->next = Node;
+        iNode->next = Node;   
+        }
+        else 
+        {
+            Node->prev = iNode;
+            iNode->next = Node;
+            // no need to set Node->next null it is by default.
+        }
+        
     }
 }
 
