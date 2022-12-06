@@ -33,17 +33,27 @@ void insertBeforeFirst(int x)
         // Node->prev = nullptr;
 }
 
-void addNode(int x)
+void addNodeLast(int x)
 {
-    DoubleLinkedList *Node, *iNode;
+    DoubleLinkedList *Node, *iNode, *prevNode;
     Node = new DoubleLinkedList(x);
     iNode = Head;
-    int n = size();
-    for (int i = 0; i < n; i++)
+
+    if(Head)
     {
-        /* code */
+    while (iNode)
+    {
+        prevNode = iNode;
+        iNode = iNode->next;
     }
-    
+    prevNode->next = Node;
+    Node->prev = prevNode;
+    //Node->next = nullptr; by default for every node->next are null.
+    } 
+    else Head = Node;
+    //by defualt Node(next & prev) are null no need to assign null on to them.
+    //Node->next = nullptr;
+    //Node->prev = nullptr;
 }
 void insertAfterFirst(DoubleLinkedList *Node)
 {
@@ -77,7 +87,7 @@ void diplayNode()
     while (iNode)
     {
         int i = 1;
-        cout << "Node" <<"[" << i << "] " <<  iNode->data() << " , ";
+        cout << "Node" <<"[" << i << "] " <<  iNode->data() << ", ";
         iNode = iNode->next;
         i++;
     }
@@ -87,6 +97,7 @@ void diplayNode()
 
 void insertAfterLast();
 void insertAtGivenPosition(DoubleLinkedList *Node , int pos);
+void reverseNode();
 
 int main() 
 { 
@@ -94,6 +105,9 @@ int main()
     insertBeforeFirst(20);
     insertBeforeFirst(30);
     
+    addNodeLast(5);
+    addNodeLast(1);
+
     diplayNode();
 
     cout << " size " << size() << endl;
