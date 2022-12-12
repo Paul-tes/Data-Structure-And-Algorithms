@@ -10,6 +10,26 @@ private:
     int _rear; // used for isert in to the Queue.
     int _size; // used for the size of the Queue.
     int *Q; // Dynamically allocate the Queue object.
+
+    void moderator() 
+    {
+        int *temp;
+        temp = new int[_size];
+        for (int i = _front + 1, j = 0; i < _size - 1; i++, j++)
+        {
+            temp[j] = Q[i];
+        }
+        delete Q;
+        int *Q;
+        Q = temp;
+        //delete temp;
+        for (int i = 0; i < _size - 1; i++)
+        {
+            cout << "temp[" << i << "] " <<temp[i] << endl;
+        }
+        
+    }
+
 public:
     Queue() // Queue Constructor. for each Queue object Creation it will be excuite the following code.
     {
@@ -61,6 +81,7 @@ int Queue::deQueue()
         _front ++;
         x = Q[_front];
     }
+    moderator();
     return x;
 }
 void Queue::diplay() {
