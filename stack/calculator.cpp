@@ -1,11 +1,12 @@
 #include <iostream>
-//#include <stack>
+#include <stack>
 #include <string.h>
 #include <stdlib.h>
 using namespace std;
 int insidePriority(char c);
 int outsidePriority(char c);
 char *infixToPostFix(char *exp);
+int result (char *postFix);
 
 
 // ############################# STACK IMPLEMENTATION ############################
@@ -100,7 +101,7 @@ bool Stack::isEmpty()
 //######################     MAIN    ###############################
 int main()
 {   
-    char infix [] = "a+b*c-d/e"; 
+    char infix [] = "10+2*3-4/2"; 
 
     char *postfix = infixToPostFix(infix);
     cout << postfix << endl;
@@ -138,8 +139,16 @@ char *infixToPostFix(char *exp)
     }
     
     
-
+    result(postFix);
     return postFix;
+}
+int result (char *postFix)
+{
+    int len = sizeof(postFix) / sizeof(char);
+    cout << len << endl;
+
+    return 0;
+    
 }
 
 int insidePriority(char c)
@@ -160,48 +169,3 @@ int outsidePriority(char c)
     else if (c == ')') return 0;
     else return -2; // none of this character is represented by -2 
 }
-
-
-
-
-// by using bultin stack. 
-
-/*
-string inToPost(string s)
-{
-    stack<char> st;
-
-    int len = s.length();
-    char *postFix;
-    postFix = (char*)malloc((len + 1) * sizeof(char));
-
-    for (int i,j = 0; s[i] != '\0'; i++)
-    {
-        if(st.top())
-        {
-            int in = insidePriority(s[i]);
-            if(in == -2) // it is not oprator. send to the postFix.
-            {
-                postFix[j] = s[i]; // insert in to the postFix character array. 
-                j++; // increment the index of the postFix char array for the next element.
-            }
-            else st.push(s[i]); // push it to in the stack with out condition b/c it is the first element on the stack.
-        }
-        else
-        {
-            int in = insidePriority(st.top());
-            int out = outsidePriority(s[i]);
-            if( in > out) // if the element IN STACK priority number is GREATER than the OUT STACK piority of the operator sign pop the stack in to prefix.
-            {
-                postFix[j] = st.pop();
-                j++;
-            }
-            else st.push(s[i]); // if it is LESS than push the element on the stack
-        }
-    }
-
-
-    string p  = postFix;
-    return p; 
-}
-*/

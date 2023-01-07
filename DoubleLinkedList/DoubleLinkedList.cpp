@@ -1,12 +1,6 @@
 #include <iostream>
 using namespace std;
 
-struct DoubleLL
-{
-    DoubleLL *Head, *Tail;
-};
-
-
 class DoubleLinkedList
 {
 private:
@@ -24,19 +18,26 @@ public:
         return _data;
     }   
 };
-DoubleLinkedList *Head = nullptr; // Global Variable for Head of A Linked List.
+DoubleLinkedList *Head = nullptr; // Global Variable for Head of The Linked List.
+DoubleLinkedList *Tail = nullptr; // Global Bariable for Tail of the Linked List.
 void insertBeforeFirst(int x)
 {
     DoubleLinkedList *Node = new DoubleLinkedList(x);
     if(Head)
     {
+        Head->prev = Node;
         Node->next = Head;
-        Head->prev = Head = Node;
+        Head = Node;
+        Head->prev = nullptr;
     } 
-    else Head = Node;
+    else 
+    {
+        Head = Node;
+        Tail = Node;
         // by default Node prev and next are null. no need to assign null to them.
         // Node->next = nullptr;
         // Node->prev = nullptr;
+    }
 }
 
 void addNodeLast(int x)
@@ -54,9 +55,10 @@ void addNodeLast(int x)
     }
     prevNode->next = Node;
     Node->prev = prevNode;
+    Tail = Node;
     //Node->next = nullptr; by default for every node->next are null.
     } 
-    else Head = Node;
+    else Head, Tail = Node;
     //by defualt Node(next & prev) are null no need to assign null on to them.
     //Node->next = nullptr;
     //Node->prev = nullptr;
@@ -71,7 +73,7 @@ void insertAfterFirst(int x)
         Head->next->prev = Node;
         Head->next = Node;
     }
-    else Head = Node;
+    else Head, Tail = Node;
         // No need to assign Node->next and Node->prev by default they are pointing to null.
 }
 int size() // finding the size of the Node
@@ -117,6 +119,21 @@ void insertAtGivenPosition(int x, int pos) // assume node index starts from 1.
     }
 }
 
+void Erase()
+{
+    DoubleLinkedList *iNode = Head;
+    while (iNode != nullptr)
+    {
+        DoubleLinkedList *p = iNode;
+        iNode = iNode->next;
+        delete p;
+    }
+
+    diplayNode();
+    cout << "Delete successful...." << endl;
+    
+}
+
 void reverseNode();
 
 int main() 
@@ -143,6 +160,8 @@ int main()
     cout << "insert node at given position position = 3, data = [100]" << endl;
     diplayNode();
     cout << " size " << size() << endl;
+
+    Erase();
 
     return 0;
 }
