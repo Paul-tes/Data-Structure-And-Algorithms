@@ -29,7 +29,7 @@
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Data Structure and Algorithms <a name="about-project"></a>
-
+This project repository is to be used as a reference for the C++ implementation code for data structures and algorithms. C++ OOP paradigms are used to describe the nature of each data structure and algorithm.
 
 ## :hammer_and_wrench: Built With <a name="built-with"></a>
 
@@ -45,6 +45,13 @@
   <ul>
     <li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>
   </ul>
+</details>
+
+<details>
+  <summary>Programming Languages</summary>
+  <ul>
+    <li><a href="https://www.programiz.com/cpp-programming">C++</a></li>
+    <li><a href="https://www.programiz.com/c-programming">C</a></li>
 </details>
 
 <!-- Features -->
