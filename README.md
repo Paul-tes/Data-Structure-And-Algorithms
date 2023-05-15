@@ -11,7 +11,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Data Structure and Algorithms ](#-Data Structure and Algorithms-)
+- [📗 Data Structure and Algorithms](#-Data-Structure-and-Algorithms-)
   - [:hammer\_and\_wrench: Built With ](#hammer_and_wrench-built-with-)
     - [Tech Stack ](#tech-stack-)
   - [Key Features ](#key-features-)
